@@ -70,16 +70,19 @@ numOfBlocks = int(input("\nHow many blocks do you want to create: "))
 #choose the difficulty leve for the Proof of Work
 DIFFICULTY_LEVEL = int(input("\nEnter the difficulty level: "))
 
+DATA = []
+for block in range(1, numOfBlocks):
+    DATA.append(input(f"\nEnter the data for the block-{block}: "))
+
 
 # blockchain is initialized and genesis block is created
 blockchain = Chain()
-print("\n", BLOCKCHAIN[-1].__dict__)
+print(f"\n{BLOCKCHAIN[-1].__dict__}")
 
 
 for num in range(1, numOfBlocks):
-    blockchain.addBlock(f"New Block {num}")
-    print("\n", BLOCKCHAIN[-1].__dict__)
+    blockchain.addBlock(DATA[num-1])
+    print(f"\n\n{BLOCKCHAIN[-1].__dict__}")
 
 
-
-print(f"\n\nBlockchain is valid: {blockchain.isValid()}")
+print(f"\n\nBlockchain is valid: {blockchain.isValid()}\n")
